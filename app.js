@@ -23,26 +23,42 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // DB Connect String
-var connect = "postgres://recipe:Password1.@localhost:5432/recipes";
+// var connect = "postgres://recipe:Password1.@localhost:5432/recipes";
 
 app.get ('/', function(req, res){
-    // PG Connect
-    var pool = new pg.Pool();
+const pg = require('pg') ;
 
-    pool.connect(connect, function(err, client, done) {
-        if(err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query('SELECT * FROM recipes', function(err, result) {
-            //call 'done()' to release the client back to the pool
-            if(err) {
-                return console.error('error running query', err);
-            }
-            res.render('index', {recipes: result.rows})
-            done();
-        });
-    });
+const pool = new pg.Pool({
+    user:'recipe',
+    host: '127.0.0.1',
+    database: 'recipes',
+    password: 'Password1.',
+    port: '5432'
 });
+
+pool.query("Select * FROM recipes", (err, res) => {
+    console.log(err, res);
+    res.render('index', {recipes: res.rows})
+    pool.end();
+});
+});
+    // // PG Connect
+    // var pool = new pg.Pool();
+
+    // pool.connect(connect, function(err, client, done) {
+    //     if(err) {
+    //         return console.error('error fetching client from pool', err);
+    //     }
+    //     client.query('SELECT * FROM recipes', function(err, result) {
+    //         //call 'done()' to release the client back to the pool
+    //         if(err) {
+    //             return console.error('error running query', err);
+    //         }
+    //         res.render('index', {recipes: result.rows})
+    //         done();
+    //     });
+    // });
+
 
 // //	pg.connect(connect, function(err, client, done) {
 //         if(err) {
