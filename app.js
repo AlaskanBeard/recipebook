@@ -28,19 +28,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get ('/', function(req, res){
 const pg = require('pg') ;
 
-const pool = new pg.Pool({
-    user:'recipe',
-    host: '127.0.0.1',
-    database: 'recipes',
-    password: 'Password1.',
-    port: '5432'
-});
+    const pool = new pg.Pool({
+        user:'recipe',
+        host: '127.0.0.1',
+        database: 'recipes',
+        password: 'Password1.',
+        port: '5432'
+    });
 
-pool.query("Select * FROM recipes", (err, res) => {
-    console.log(err, res);
-    res.render('index', {recipes: res.rows})
-    pool.end();
-});
+    pool.query("Select * FROM recipes", (err, result) => {
+        console.log(err, res);
+        res.render('index', {recipes: result.rows})
+        pool.end();
+    });
 });
     // // PG Connect
     // var pool = new pg.Pool();
