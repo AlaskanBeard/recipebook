@@ -25,19 +25,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get ('/', function(req, res){
     // PG Connect
-	pg.connect(connect, function(err, client, done) {
-        if(err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query('SELECT * FROM recipes', function(err, result) {
-            //call 'done()' to release the client back to the pool
-            if(err) {
-                return console.error('error running query', err);
-            }
-            res.render('index', {recipes: result.rows})
-            done();
-        });
-    });
+    const { Pool, Client } = require('pg');
+    const connectionString = "postgres://recipe:Password1.@localhost/recipes";
+    const client = new Client({
+        connectionString: connectionString,
+      });
+      client.connect();
+      
+      client.query('SELECT * FROM recipes', (err, res) => {
+        console.log(err, res);
+        client.end();
+      });
 });
 // Server
 app.listen(3000, function(){
