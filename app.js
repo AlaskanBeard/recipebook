@@ -37,7 +37,7 @@ module.exports = {
   }
 }
 
-app.get ('/', function(req, res){
+app.get ('/', function(req, response){
 //console.log('TEST');
     //response.render('index');
     pool.query('SELECT * FROM recipes', (err, result) => {
