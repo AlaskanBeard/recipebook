@@ -40,7 +40,7 @@ app.get ('/', function(req, res){
             done();
         });
     });
-});
+};
 
 // //	pg.connect(connect, function(err, client, done) {
 //         if(err) {
