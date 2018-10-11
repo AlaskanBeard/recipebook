@@ -20,23 +20,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get ('/', function(req, res){
-    // PG Connect
-    const { Pool, Client } = require('pg');
-    const connectionString = "postgresql://recipe:Password1.@localhost/recipes";
-    const client = new Client({
-        connectionString: connectionString,
-      });
-      client.connect();
-      
-      client.query('SELECT * FROM recipes', function(err, result) {
-        if(err) {
-            return console.log('error running query', err);
-        }
-        res.render('index', {recipes: result.rows});
-        client.end();
-      });
-});
+    // DB Connect String    
+const { Pool } = require('pg')
+var connectionString = 'postgresql://recipe:Password1.@localhost/recipes';
+const pool = new Pool({
+  connectionString: connectionString,
+})
+module.exports = {
+  query: (text, params, callback) => {
+    return pool.query(text, params, callback)
+  }
+}
+
+app.get('/', function(request, response) {
+    //console.log('TEST');
+    //response.render('index');
+    pool.query('SELECT * FROM recipes', (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    //console.log(err, res);
+    response.render('index', {recipes: result.rows});
+    //res.send(res.rows[0]);
+    
+    //pool.end();
+  })
+})
 // Server
 app.listen(3000, function(){
 	console.log('Server Started on Port 3000');
