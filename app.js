@@ -27,7 +27,7 @@ var connect = "postgres://recipe:Password1.@localhost:5432/recipes";
 
 app.get ('/', function(req, res){
     // PG Connect
-    var pool = new pg.pool();
+    var pool = new pg.Pool();
 
     pool.connect(connect, function(err, client, done) {
         if(err) {
