@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // DB Connect String    
 const { Pool } = require('pg')
-var connectionString = 'postgresql://onix:YourPassword@localhost:5432/recipebookdb';
+var connectionString = 'postgresql://recipe:Password1.@localhost:5432/recipes';
 const pool = new Pool({
   connectionString: connectionString,
 })
