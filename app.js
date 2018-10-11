@@ -38,7 +38,7 @@ const pg = require('pg') ;
 
     pool.query("Select * FROM recipes", (err, result) => {
         console.log(err, res);
-        res.render('index', {recipes: result.rows})
+        res.render('index', {recipes: result.rows});
         pool.end();
     });
 });
