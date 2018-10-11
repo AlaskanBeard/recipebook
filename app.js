@@ -29,9 +29,11 @@ app.get ('/', function(req, res){
       });
       client.connect();
       
-      client.query('SELECT * FROM recipes', (err, result) => {
-        console.log(err, res);
-        res.render('index', {recipes: result.rows})
+      client.query('SELECT * FROM recipes', function(err, result) {
+        if(err) {
+            return console.log('error running query', err);
+        }
+        res.render('index', {recipes: result.rows});
         client.end();
       });
 });
