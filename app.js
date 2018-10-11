@@ -6,9 +6,6 @@ var express = require('express'),
     pg = require('pg'),
     app = express();
 
-// DB Connect String
-var connect = "postgres://recipe:Password1.@localhost/recipes";
-
 // Assign Dust Engine to .dust Files
 app.engine('dust', cons.dust);
 
@@ -26,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get ('/', function(req, res){
     // PG Connect
     const { Pool, Client } = require('pg');
-    const connectionString = "postgres://recipe:Password1.@localhost/recipes";
+    const connectionString = "postgresql://recipe:Password1.@localhost/recipes";
     const client = new Client({
         connectionString: connectionString,
       });
