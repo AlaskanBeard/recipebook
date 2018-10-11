@@ -25,23 +25,48 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // DB Connect String
 // var connect = "postgres://recipe:Password1.@localhost:5432/recipes";
 
+// DB Connect String    
+const { Pool } = require('pg')
+var connectionString = 'postgresql://onix:YourPassword@localhost:5432/recipebookdb';
+const pool = new Pool({
+  connectionString: connectionString,
+})
+module.exports = {
+  query: (text, params, callback) => {
+    return pool.query(text, params, callback)
+  }
+}
+
 app.get ('/', function(req, res){
-const pg = require('pg') ;
-
-    const pool = new pg.Pool({
-        user:'recipe',
-        host: '127.0.0.1',
-        database: 'recipes',
-        password: 'Password1.',
-        port: '5432'
-    });
-
-    pool.query("Select * FROM recipes", (err, result) => {
-        console.log(err, res);
-        res.render('index', {recipes: result.rows});
-        pool.end();
+//console.log('TEST');
+    //response.render('index');
+    pool.query('SELECT * FROM recipes', (err, result) => {
+        if (err) {
+          return next(err);
+        }
+        //console.log(err, res);
+        response.render('index', {recipes: result.rows});
+        //res.send(res.rows[0]);
+        
+        //pool.end();
     });
 });
+
+// const pg = require('pg') ;
+
+//     const pool = new pg.Pool({
+//         user:'recipe',
+//         host: '127.0.0.1',
+//         database: 'recipes',
+//         password: 'Password1.',
+//         port: '5432'
+//     });
+
+//     pool.query("Select * FROM recipes", (err, result) => {
+//         console.log(err, res);
+//         res.render('index', {recipes: result.rows});
+//         pool.end();
+//     });
     // // PG Connect
     // var pool = new pg.Pool();
 
