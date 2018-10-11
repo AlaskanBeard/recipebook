@@ -6,8 +6,7 @@ var express = require('express'),
     pg = require('pg'),
     app = express();
 
-// DB Connect String
-var connect = "postgres://recipe:Password1.@localhost/recipes";
+
 
 // Assign Dust Engine to .dust Files
 app.engine('dust', cons.dust);
@@ -23,11 +22,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// DB Connect String
+var connect = "postgres://recipe:Password1.@localhost:5432/recipes";
+
 app.get ('/', function(req, res){
     // PG Connect
     var pool = new pg.pool();
 
-    pool.connect(function(err, client, done)) {
+    pool.connect(connect, function(err, client, done) {
         if(err) {
             return console.error('error fetching client from pool', err);
         }
@@ -40,7 +42,7 @@ app.get ('/', function(req, res){
             done();
         });
     });
-};
+});
 
 // //	pg.connect(connect, function(err, client, done) {
 //         if(err) {
