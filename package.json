@@ -1,0 +1,21 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "dependencies": {
+   "body-parser": "*",
+   "consolidate": "*",
+   "dust": "*",
+   "dustjs-helpers": "*",
+   "dustjs-linkedin": "*",
+   "express": "*",
+   "pg": "*"
+  },
+  "description": "Recipe manager",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zack Gray",
+  "license": "ISC"
+}
+
