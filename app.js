@@ -47,7 +47,7 @@ app.get ('/', function(req, response){
         if (err) {
           return console.error('error running query', err);
         }
-        console.log('id: %d', result.rows[0]);
+        console.log(result.rowCount);
         //console.log(err, res);
     //     response.render('index', {recipes: result.rows});
 
