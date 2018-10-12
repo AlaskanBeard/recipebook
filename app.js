@@ -31,11 +31,12 @@ var connectionString = 'postgresql://recipe:Password1.@localhost:5432/recipes';
 const pool = new Pool({
   connectionString: connectionString,
 })
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback)
-  }
-}
+// extra code..?
+    // module.exports = {
+    //   query: (text, params, callback) => {
+    //     return pool.query(text, params, callback)
+    //   }
+    // }
 
 app.get ('/', function(req, response){
     //debug
@@ -46,7 +47,7 @@ app.get ('/', function(req, response){
         if (err) {
           return console.error('error running query', err);
         }
-        console.log('name: %s and id: %d', result.rows[0].name, result.rows[0].id);
+        console.log('id: %d', result.rows[0].id);
         //console.log(err, res);
     //     response.render('index', {recipes: result.rows});
 
