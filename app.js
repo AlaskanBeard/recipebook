@@ -59,8 +59,8 @@ app.get ('/', function(req, response){
 
 app.post('/add', function(req, response){
 
-    pool.query("INSERT INTO recipes(name, ingredients, directions) VALUES($1, $2, $3)",
-     [req.body.name, req.body.ingredients, req.body.directions]);
+    pool.query("INSERT INTO recipes(name, ingredients, directions) VALUES($1, $2, $3, $4)",
+     [req.body.name, req.body.ingredients, req.body.directions, req.body.source]);
     response.redirect('/');
 });
 
