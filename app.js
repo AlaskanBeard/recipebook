@@ -38,19 +38,19 @@ module.exports = {
 }
 
 app.get ('/', function(req, response){
-//console.log('TEST');
+console.log('TEST');
     //response.render('index');
-    pool.query('SELECT * FROM recipes', (err, result) => {
-        if (err) {
-          return console.error('error running query', err);
-        }
-        //console.log(err, res);
-        response.render('index', {recipes: result.rows});
+    // pool.query('SELECT * FROM recipes', (err, result) => {
+    //     if (err) {
+    //       return console.error('error running query', err);
+    //     }
+    //     //console.log(err, res);
+    //     response.render('index', {recipes: result.rows});
         //res.send(res.rows[0]);
         
         //pool.end();
     });
-});
+//});
 
 // const pg = require('pg') ;
 
