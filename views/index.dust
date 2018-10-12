@@ -3,7 +3,7 @@
 {<body}
 	{#recipes}
 		<div class="well">
-			<h4>{name} {id}
+			<h4>{name} 
 			<button class="btn btn-default pull-right" data-toggle="collapse" href="#recipe_{id}" aria-expanded="false" aria-controls="recipe_{id}">
 				<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 			</button></h4>
@@ -15,13 +15,6 @@
 				<p><strong>Directions: </strong>{directions}</p>
 				<br />
 				<hr />
-			</div>
-		<div class="well">
-			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-				Button with data-target
-			</button>
-			<div class="collapse" id="collapseExample">
-				test
 			</div>
 		</div>
 	{/recipes}
