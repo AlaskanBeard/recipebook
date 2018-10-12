@@ -26,11 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // var connect = "postgres://recipe:Password1.@localhost:5432/recipes";
 
 // DB Connect String    
-const { Pool } = require('pg')
-var connectionString = 'postgresql://recipe:Password1.@localhost:5432/recipes';
-const pool = new Pool({
-  connectionString: connectionString,
-})
+
+
 // extra code..?
     // module.exports = {
     //   query: (text, params, callback) => {
@@ -38,16 +35,23 @@ const pool = new Pool({
     //   }
     // }
 
+const { Pool } = require('pg')
+var connectionString = 'postgresql://recipe:Password1.@localhost:5432/recipes';
+const pool = new Pool({
+  connectionString: connectionString,
+})
+
 app.get ('/', function(req, response){
     //debug
         //console.log('TEST');
         //response.render('index');
 
-    pool.query('SELECT * FROM recipes', (err, result) => {
+    pool.query('SELECT * FROM recipes', (err, res) => {
         if (err) {
           return console.error('error running query', err);
         }
-    response.render('index', {recipes: result.rows});
+        console.log(err, res)
+    //response.render('index', {recipes: result.rows});
 
         
     //     //pool.end();
