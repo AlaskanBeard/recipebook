@@ -46,12 +46,11 @@ app.get ('/', function(req, response){
         //console.log('TEST');
         //response.render('index');
 
-    pool.query('SELECT * FROM recipes', (err, res) => {
+    pool.query('SELECT * FROM recipes', (err, result) => {
         if (err) {
           return console.error('error running query', err);
         }
-        console.log(err, res)
-    //response.render('index', {recipes: result.rows});
+    response.render('index', {recipes: result.rows});
 
         
     //     //pool.end();
