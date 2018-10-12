@@ -17,7 +17,9 @@
 				<br />
 				<p><strong>Ingredients: </strong>{ingredients}</p>
 				<p><strong>Directions: </strong>{directions}</p>
-				<p><strong>Source url: </strong>{source}</p>
+				{?source}
+					<p><strong>Source URL: </strong><a href="{source}">link</p>
+				{/source}
 				<br />
 				<hr />
 				<button class="btn btn-default edit-recipe">
