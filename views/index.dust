@@ -1,7 +1,5 @@
 {>"layout" /}
 
 {<body}
-	{#recipes}
-		teeeeeest
-	{/recipes}
+	teeeeeeest
 {/body}
