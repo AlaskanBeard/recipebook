@@ -50,7 +50,7 @@ app.get ('/', function(req, response){
         if (err) {
           console.log('error running query', err);
         }
-        console.log(res.fields[0].name);
+        console.log(res.rows[1].name);
 
     //response.render('index', {recipes: result.rows});
 
