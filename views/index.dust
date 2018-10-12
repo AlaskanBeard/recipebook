@@ -3,7 +3,12 @@
 {<body}
 	{#recipes}
 		<div class="well">
-			<h4>{name} <button class="btn btn-default"></button>View<h4>
+			<h4>{name} 
+			<button class="btn btn-default pull-right" data-toggle="collapse" href="#recipe_{id}" aria-expanded="false" aria-controls="recipe_{id}"></button>View
+			</h4>
+			<div class="collapse" id="recipe_{id}">
+				TEST
+			</div>
 		</div>
 	{/recipes}
 {/body}
