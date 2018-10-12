@@ -57,6 +57,15 @@ app.get ('/', function(req, response){
     });
 });
 
+app.post('/add', function(req, response){
+
+    pool.query('INSERT INTO recipes(name, ingredients, directions) VALUES($1, $2, $3)',);
+    [req.body.name, req.body.ingredients, req.body.directions]);
+
+    done();
+    response.redirect('/');
+});
+
 // Server
 app.listen(3000, function(){
 	console.log('Server Started on Port 3000');
