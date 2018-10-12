@@ -57,54 +57,6 @@ app.get ('/', function(req, response){
     });
 });
 
-// const pg = require('pg') ;
-
-//     const pool = new pg.Pool({
-//         user:'recipe',
-//         host: '127.0.0.1',
-//         database: 'recipes',
-//         password: 'Password1.',
-//         port: '5432'
-//     });
-
-//     pool.query("Select * FROM recipes", (err, result) => {
-//         console.log(err, res);
-//         res.render('index', {recipes: result.rows});
-//         pool.end();
-//     });
-    // // PG Connect
-    // var pool = new pg.Pool();
-
-    // pool.connect(connect, function(err, client, done) {
-    //     if(err) {
-    //         return console.error('error fetching client from pool', err);
-    //     }
-    //     client.query('SELECT * FROM recipes', function(err, result) {
-    //         //call 'done()' to release the client back to the pool
-    //         if(err) {
-    //             return console.error('error running query', err);
-    //         }
-    //         res.render('index', {recipes: result.rows})
-    //         done();
-    //     });
-    // });
-
-
-// //	pg.connect(connect, function(err, client, done) {
-//         if(err) {
-//             return console.error('error fetching client from pool', err);
-//         }
-//         client.query('SELECT * FROM recipes', function(err, result) {
-//             //call 'done()' to release the client back to the pool
-//             if(err) {
-//                 return console.error('error running query', err);
-//             }
-//             res.render('index', {recipes: result.rows})
-//             done();
-//         });
-//     });
-// });
-
 // Server
 app.listen(3000, function(){
 	console.log('Server Started on Port 3000');
