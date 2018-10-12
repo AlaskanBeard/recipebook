@@ -52,7 +52,7 @@ app.get ('/', function(req, response){
 
         
     //     //pool.end();
-    // });
+    });
 });
 
 // const pg = require('pg') ;
