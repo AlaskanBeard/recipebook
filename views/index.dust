@@ -11,10 +11,17 @@
 			<div class="collapse" id="recipe_{id}">
 				<br />
 				<br />
-				<p><strong>Ingredients: </strong>{ingredients)</p>
-				<p><strong>Directions: </strong>{directions)</p>
+				<p><strong>Ingredients: </strong>{ingredients}</p>
+				<p><strong>Directions: </strong>{directions}</p>
 				<br />
 				<hr />
+			</div>
+		<div class="well">
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				Button with data-target
+			</button>
+			<div class="collapse" id="collapseExample">
+				test
 			</div>
 		</div>
 	{/recipes}
