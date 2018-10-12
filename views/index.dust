@@ -9,7 +9,12 @@
 			</button></h4>
 				
 			<div class="collapse" id="recipe_{id}">
-				TEST
+				<br />
+				<br />
+				<p><strong>Ingredients: </strong>{ingredients)</p>
+				<p><strong>Directions: </strong>{directions)</p>
+				<br />
+				<hr />
 			</div>
 		</div>
 	{/recipes}
