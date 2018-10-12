@@ -46,7 +46,7 @@ app.get ('/', function(req, response){
         if (err) {
           return console.error('error running query', err);
         }
-        console.log(result);
+        console.log('name: %s and id: %d', result.rows[0].name, result.rows[0].id);
         //console.log(err, res);
     //     response.render('index', {recipes: result.rows});
 
