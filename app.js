@@ -48,9 +48,10 @@ app.get ('/', function(req, response){
 
     pool.query('SELECT * FROM recipes', (err, res) => {
         if (err) {
-          return console.error('error running query', err);
+          console.log('error running query', err);
         }
-        console.log(err, res)
+        console.log(res.fields[0].name);
+
     //response.render('index', {recipes: result.rows});
 
         
